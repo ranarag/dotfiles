@@ -1,4 +1,6 @@
 call pathogen#infect()
+execute pathogen#infect('bundle/{}')
+call pathogen#helptags()
 set number
 syntax on
 set showcmd
@@ -35,3 +37,16 @@ nnoremap <C-Down> <C-W><C-J>
 nnoremap <C-Up> <C-W><C-K>
 nnoremap <C-Right> <C-W><C-L>
 nnoremap <C-Left> <C-W><C-H>
+
+
+" vim + tmux commands
+let g:tmux_navigator_save_on_switch = 1
+
+if has("autocmd")
+  augroup templates
+    autocmd BufNewFile *.py 0r ~/.vim/templates/skeleton.py | normal! 10G
+    autocmd BufNewFile *.c 0r ~/.vim/templates/skeleton.c | normal! 10G
+    autocmd BufNewFile *.cpp 0r ~/.vim/templates/skeleton.cpp | normal! 16G
+ augroup END
+endif
+
